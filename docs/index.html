@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        :root {
+            --cream:  #F5F1DC;
+            --blue:   #0046FF;
+            --orange: #FF8040;
+            --ink:    #1A150E;
+            --carbon: #2B2B2B;
+            --white:  #FAFAF5;
+            --faded:  #8A8070;
+            --rule:   rgba(26,21,14,0.09);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #ede8d8 100%);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--white);
+            padding: 120px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background:
+                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url("./assets/IMG_9391.jpg") center/cover no-repeat;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 70, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -250px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 128, 64, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            
+        }
+
+        .header-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--orange);
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid var(--orange);
+            border-radius: 24px;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 96px;
+            font-weight: 800;
+            color:  #F5F1DC;
+            margin: 30px 0;
+            letter-spacing: -3px;
+            line-height: 1;
+            animation: slideInUp 1s ease-out 0.2s both;
+            position: relative;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-title-split {
+            display: block;
+            background: linear-gradient(135deg, var(--ink) 0%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .accent-underline {
+            position: relative;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .accent-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--orange) 0%, var(--blue) 100%);
+            border-radius: 3px;
+            animation: expandWidth 1s ease-out 0.5s both;
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        .header-description {
+            font-size: 18px;
+            color: var(--faded);
+            max-width: 600px;
+            margin: 40px auto 0;
+            line-height: 1.8;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .header-cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        .header-btn {
+            padding: 14px 36px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            border: 2px solid;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .header-btn-primary {
+            background: var(--blue);
+            color: var(--white);
+            border-color: var(--blue);
+        }
+
+        .header-btn-primary:hover {
+            background: transparent;
+            color: var(--blue);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 70, 255, 0.2);
+        }
+
+        .header-btn-secondary {
+            background: transparent;
+            color: var(--ink);
+            border-color: var(--ink);
+        }
+
+        .header-btn-secondary:hover {
+            background: var(--ink);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(26, 21, 14, 0.15);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-mouse {
+            width: 26px;
+            height: 40px;
+            border: 2px solid var(--orange);
+            border-radius: 13px;
+            position: relative;
+        }
+
+        .scroll-mouse::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 1px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 8px;
+            animation: scroll 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll {
+            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(16px); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .portfolio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Base row height for landscape items */
+            auto-rows: 280px;
+            gap: 20px;
+            width: 100%;
+        }
+
+
+        /* Default: landscape (horizontal) items */
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--carbon);
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(26, 21, 14, 0.08);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            /* Ensure image fills the container */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Vertical (portrait) items */
+        .portfolio-item.vertical {
+            /* Make vertical items taller by using a different row span or explicit height */
+            grid-row: span 2;
+        }
+
+        .portfolio-item.vertical img {
+            /* Optional: ensure object-fit works well for portrait */
+            object-fit: cover;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 21, 14, 0.7) 0%, rgba(0, 70, 255, 0.2) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            backdrop-filter: blur(3px);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .overlay-subtext {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .portfolio-item.featured {
+            border: 2px solid var(--orange);
+        }
+
+        .portfolio-item.featured::before {
+            content: 'Featured';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--orange);
+            color: var(--white);
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 1024px) {
+            header {
+                padding: 100px 30px;
+                min-height: 600px;
+            }
+
+            header h1 {
+                font-size: 64px;
+            }
+
+            .header-description {
+                font-size: 16px;
+            }
+
+            .portfolio-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                auto-rows: 200px;
+                gap: 16px;
+            }
+
+            .portfolio-item:nth-child(10n + 1) {
+                grid-column: span 1;
+            }
+
+            .portfolio-item:nth-child(7) {
+                grid-column: span 1;
+            }
+
+            .portfolio-item:nth-child(18) {
+                grid-column: span 2;
+            }
+
+            .container {
+                padding: 60px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 20px;
+                min-height: 500px;
+            }
+
+            header h1 {
+                font-size: 48px;
+            }
+
+            .header-label {
+                font-size: 11px;
+            }
+
+            .header-description {
+                font-size: 15px;
+            }
+
+            .header-btn {
+                padding: 12px 28px;
+                font-size: 12px;
+            }
+
+            .portfolio-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                auto-rows: 150px;
+                gap: 12px;
+            }
+
+            .portfolio-item:nth-child(10n + 1) {
+                grid-column: span 1;
+            }
+
+            .portfolio-item:nth-child(7) {
+                grid-column: span 1;
+            }
+
+            .portfolio-item:nth-child(18) {
+                grid-column: span 2;
+            }
+
+            .portfolio-item:hover {
+                transform: translateY(-4px);
+            }
+
+            .portfolio-item:hover img {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 60px 16px;
+                min-height: 400px;
+            }
+
+            header h1 {
+                font-size: 36px;
+            }
+
+            .header-description {
+                font-size: 14px;
+            }
+
+            .header-cta-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .header-btn {
+                width: 100%;
+            }
+
+            .portfolio-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                auto-rows: 120px;
+                gap: 8px;
+            }
+
+            .portfolio-item:nth-child(10n + 1),
+            .portfolio-item:nth-child(7),
+            .portfolio-item:nth-child(18) {
+                grid-column: span 1;
+            }
+
+            .portfolio-item:hover {
+                transform: translateY(-2px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-label">Portfolio</div>
+            <h1><span class="accent-underline"> David Hatch</span> <span class="header-title-split">Sports Photographer</span></h1>
+            <h3><span class="header-title-split">Precision Timing.</span><span class="header-title-split">Powerful imagery.</span></h3>
+        
+            </div>
+            <div class="header-cta-group">
+                <a href="https://www.instagram.com/photronomy_/" target="_blank" class="header-btn header-btn-primary">View My Work</a>
+                <a href="https://www.matchmedia.agency/" target="_blank" class="header-btn header-btn-primary">Get in Touch</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-mouse"></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="portfolio-gallery">
+            <div class="portfolio-item">
+                <img src="./assets/IMG_7025.jpg" alt="Featured Project">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican Soccer Team</div>
+                    <div class="overlay-subtext">Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_2841.jpg" alt="Project 1">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican Soccer Team</div>
+                    <div class="overlay-subtext">Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_2688.jpg" alt="Project 2">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican Soccer Team</div>
+                    <div class="overlay-subtext">Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_0105.jpg" alt="Project 3">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">NBA G-League</div>
+                    <div class="overlay-subtext">Basketball</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_1152.jpg" alt="Project 4">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Women's Liga MX</div>
+                    <div class="overlay-subtext">Women's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_9284.jpg" alt="Project 5">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Men's Liga MX</div>
+                    <div class="overlay-subtext">Men's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_0491.jpg" alt="Project 6">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican Baseball League</div>
+                    <div class="overlay-subtext">Baseball</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_2649.jpg" alt="Project 7">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican Soccer Team</div>
+                    <div class="overlay-subtext">Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/0C7A5037.jpg" alt="Project 8">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican ATP 500</div>
+                    <div class="overlay-subtext">Professional Tennis</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_3845.jpg" alt="Project 9">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican Baseball League</div>
+                    <div class="overlay-subtext">Baseball</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_4189.jpg" alt="Project 10">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Women's Liga MX</div>
+                    <div class="overlay-subtext">Women's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_5226.jpg" alt="Project 11">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Men's Liga MX</div>
+                    <div class="overlay-subtext">Men's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_5975.jpg" alt="Project 12">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Concachampions</div>
+                    <div class="overlay-subtext">Men's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_0031.jpg" alt="Project 13">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">ONEFA Finals</div>
+                    <div class="overlay-subtext">College Football</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_2834-2.jpg" alt="Project 14">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">ONEFA Semifinal</div>
+                    <div class="overlay-subtext">College Football</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_3046.jpg" alt="Project 15">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Women's Liga MX</div>
+                    <div class="overlay-subtext">Women's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_0048.jpg" alt="Project 16">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Men's Liga MX</div>
+                    <div class="overlay-subtext">Men's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_5139.jpg" alt="Project 17">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican ATP 500</div>
+                    <div class="overlay-subtext">Professional Tennis</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_6864.jpg" alt="Project 18">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican Soccer Team</div>
+                    <div class="overlay-subtext">Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_5893.jpg" alt="Project 19">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Concachampions</div>
+                    <div class="overlay-subtext">Men's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="./assets/IMG_9391.jpg" alt="Project 20">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Men's Liga MX</div>
+                    <div class="overlay-subtext">Men's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_9162.jpg" alt="Project 21">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Men's Liga MX</div>
+                    <div class="overlay-subtext">Men's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_9977.jpg" alt="Project 22">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">NBA G-League</div>
+                    <div class="overlay-subtext">Basketball</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_0634.jpg" alt="Project 23">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Mexican Softball League</div>
+                    <div class="overlay-subtext">Softball</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_1675.jpg" alt="Project 24">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Women's Liga MX</div>
+                    <div class="overlay-subtext">Women's Professional Soccer</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item vertical">
+                <img src="./assets/IMG_6712.jpg" alt="Project 25">
+                <div class="portfolio-overlay">
+                    <div class="overlay-text">Women's Liga MX</div>
+                    <div class="overlay-subtext">Women's Professional Soccer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
